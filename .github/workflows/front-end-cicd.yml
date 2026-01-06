@@ -1,0 +1,48 @@
+name: 🚀 Deploy Website to AWS S3 + CloudFront
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Upload to S3 and Invalidate CloudFront
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Configure AWS credentials
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # Step 3: Verify environment setup (helps debug missing bucket names)
+      - name: Debug environment
+        run: |
+          echo "✅ AWS Region: ${{ secrets.AWS_REGION }}"
+          echo "✅ S3 Bucket: ${{ secrets.S3_BUCKET }}"
+          if [ -z "${{ secrets.S3_BUCKET }}" ]; then
+            echo "❌ ERROR: S3_BUCKET secret is missing!"
+            exit 1
+          fi
+
+      # Step 4: Sync website files to S3
+      - name: Sync website files to S3
+        run: |
+          echo "🚀 Deploying files from ./Frontend to s3://${{ secrets.S3_BUCKET }}"
+          aws s3 sync ./Frontend s3://${{ secrets.S3_BUCKET }} --delete --exact-timestamps
+          echo "✅ Files successfully synced to S3."
+
+      # Step 5: Create CloudFront invalidation (clear cache)
+      - name: Create CloudFront invalidation
+        run: |
+          echo "🌀 Creating CloudFront cache invalidation..."
+          aws cloudfront create-invalidation --distribution-id E3MPMHVDJUWXA8 --paths "/*"
+          echo "✅ CloudFront cache invalidation complete."

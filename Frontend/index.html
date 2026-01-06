@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanchan Kumar Majumder</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+
+<body>
+
+<header id="header">
+    <div class="row m-0">
+        <div class="col-3 bgcolor-black">
+            <nav class="primary-nav navbar-expand-md">
+                <div class="site-title text-center text-light py-5">
+                    <a href="#" class="navbar-brand font-staat font-size-40">KM</a>
+                </div>
+                <div class="d-flex flex-column">
+                    <a href="#home" class="nav-item nav-link text-white-50">Home</a>
+                    <a href="#about_me" class="nav-item nav-link text-white-50">About</a>
+                    <a href="#skills" class="nav-item nav-link text-white-50">Skills</a>
+                    <a href="#awards" class="nav-item nav-link text-white-50">Achievements</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main id="site-main">
+<div class="row m-0">
+<div class="col-md-9 offset-md-3 px-0">
+
+<!-- Banner -->
+<section class="site-banner bg-light" id="home">
+    <div class="author text-center">
+        <img src="./about.jpg.jpg" alt="Kanchan Kumar Majumder" class="author-img">
+        <h1 class="font-staat font-size-40 py-3">Kanchan Kumar Majumder</h1>
+        <h5 class="font-ram font-size-27">I'm a <span id="typed"></span></h5>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about px-4 my-5" id="about_me">
+    <h1 class="font-staat font-size-34">About Me</h1>
+    <p class="font-ram text-black-50 py-2">
+        MCA candidate with 3+ years of experience in backend and full-stack development.
+        Strong in Data Structures & Algorithms, Core Java, Python, SQL and DBMS.
+        Experienced in building scalable, high-performance systems and automation tools.
+    </p>
+
+    <a href="./Kanchan Kumar Majumder.pdf" download
+       class="btn btn-dark text-uppercase">
+        Download CV
+    </a>
+</section>
+
+<!-- Skills -->
+<section class="skill px-4 py-5 bg-light" id="skills">
+    <h1 class="font-staat font-size-34">My Skills</h1>
+    <p class="font-ram text-black-50">
+        Core Java, Python, C, JavaScript<br>
+        Data Structures & Algorithms, OOPs, DBMS<br>
+        ReactJS, NodeJS, Spring Boot, MERN Stack<br>
+        MySQL, Azure, Git, Power BI
+    </p>
+</section>
+
+<!-- Achievements -->
+<section class="awards px-4 py-5" id="awards">
+    <h1 class="font-staat font-size-34">
+        <i class="fas fa-award"></i> Certifications
+    </h1>
+
+    <ul class="fa-ul font-ram text-black-50">
+        <li><i class="fa-li fa fa-trophy text-warning"></i> Microsoft Power BI Data Analyst</li>
+        <li><i class="fa-li fa fa-trophy text-warning"></i> Azure Cloud Services – Coursera</li>
+        <li><i class="fa-li fa fa-trophy text-warning"></i> Azure DevOps Boards</li>
+        <li><i class="fa-li fa fa-trophy text-warning"></i> DSA Specialization</li>
+    </ul>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="pt-5 px-3">
+    <div class="row bg-light py-5 align-items-center">
+
+        <div class="col-sm-4 text-center">
+            <h6 class="text-black-50">
+                &copy;2025 Kanchan. All rights reserved
+            </h6>
+        </div>
+
+       
+
+        <div class="col-sm-4 text-center">
+            <a href="https://www.linkedin.com/" target="_blank" class="mx-2">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/" target="_blank" class="mx-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</div>
+</div>
+</main>
+
+<script src="index.js"></script>
+
+<script>
+new Typed('#typed', {
+    strings: ["Backend Developer", "Java Programmer", "DSA Enthusiast"],
+    typeSpeed: 60,
+    backSpeed: 40,
+    loop: true
+});
+</script>
+
+</body>
+</html>
