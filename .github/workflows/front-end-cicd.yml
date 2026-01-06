@@ -23,7 +23,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      # Step 3: Verify environment setup (helps debug missing bucket names)
+      # Step 3: Verify environment setup
       - name: Debug environment
         run: |
           echo "✅ AWS Region: ${{ secrets.AWS_REGION }}"
@@ -37,12 +37,16 @@ jobs:
       - name: Sync website files to S3
         run: |
           echo "🚀 Deploying files from ./Frontend to s3://${{ secrets.S3_BUCKET }}"
-          aws s3 sync ./Frontend s3://${{ secrets.S3_BUCKET }} --delete --exact-timestamps
+          aws s3 sync ./Frontend s3://${{ secrets.S3_BUCKET }} \
+            --delete \
+            --exact-timestamps
           echo "✅ Files successfully synced to S3."
 
       # Step 5: Create CloudFront invalidation (clear cache)
       - name: Create CloudFront invalidation
         run: |
           echo "🌀 Creating CloudFront cache invalidation..."
-          aws cloudfront create-invalidation --distribution-id E3MPMHVDJUWXA8 --paths "/*"
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
           echo "✅ CloudFront cache invalidation complete."
